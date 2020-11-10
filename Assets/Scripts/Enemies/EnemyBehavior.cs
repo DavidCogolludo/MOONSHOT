@@ -5,12 +5,12 @@ using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 {
-    public float speed = 0.01f;
-    public Vector3 target_pos = new Vector3(0.0f, 0.0f, 0.0f);
+    public float speed = 0.5f;
+    public Vector3 target_pos = new Vector3(0.0f, 0.0f, 0.0f); // The moon pos
 
-    // Maybe we have to change this offset depending the position of the sprite to rotate it properly.
+    // Maybe we have to change this offset depending the position/rotation of the sprite to rotate it properly.
     private float angle_offset = -90;
 
     // Start is called before the first frame update
@@ -29,8 +29,4 @@ public class EnemyBehaviour : MonoBehaviour
         transform.position += new_velocity_vector;
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        // TODO: Define what we want when enemy collides
-    }
 }
