@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Torreta : MonoBehaviour
@@ -14,8 +13,8 @@ public class Torreta : MonoBehaviour
          t = Instantiate(torreta);
          ChildGameObject1 = t.transform.GetChild(0).gameObject;
         //t.AddComponent<SpriteRenderer>().sprite = torreta;
-        Debug.Log(gameObject.transform.localScale.x);
-        int r = Random.RandomRange(0, 360);
+        //Debug.Log(gameObject.transform.localScale.x);
+        int r = Random.Range(0, 360);
         t.transform.Rotate(Vector3.forward, r);
         t.transform.localPosition = t.transform.up * gameObject.transform.localScale.x;
 
