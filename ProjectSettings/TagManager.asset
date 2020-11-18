@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Player
+    uniqueID: 1142371757
+    locked: 0
+  - name: EnemyShip
+    uniqueID: 3501366231
+    locked: 0
+  - name: Enemy
+    uniqueID: 3592396183
+    locked: 0
