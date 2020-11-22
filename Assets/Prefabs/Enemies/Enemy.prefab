@@ -110,8 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81df3ff17dcb86842b7391c31afc174f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 5
   target_pos: {x: 0, y: 0, z: 0}
+  min_distance_for_landing: 3
 --- !u!61 &8819395590729036869
 BoxCollider2D:
   m_ObjectHideFlags: 0

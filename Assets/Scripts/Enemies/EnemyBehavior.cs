@@ -12,16 +12,16 @@ public class EnemyBehavior : MonoBehaviour
     private const float MAX_LANDING_ANGLE = 180.0f;
 
     // Global params
-    public float speed = 10.0f;
+    public float speed = 5.0f;
     private bool has_landed = false;
 
     //Moon info
     // TODO: Get the moon radius and position on start.
     public Vector3 target_pos = new Vector3(0.0f, 0.0f, 0.0f); // The moon pos
-    public float moon_radius = 2.7f;
+    private float moon_radius = 2.7f;
 
     // Landing params
-    public float min_distance_for_landing = 10.0f;  // The min distance between the enemy and the moon to start landing
+    public float min_distance_for_landing = 3.0f;  // The min distance between the enemy and the moon to start landing
     private float current_land_rotation = 0.0f;
     private float land_speed;
     
@@ -29,12 +29,35 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        // Initialize land speed proportionaly of the current speed
+        // For the moment we reduce a half of the current speed and we can change this if we want
+        land_speed = speed / 2.0f;
+
+        // Get the moon position and radius
+        GameObject moon = GameObject.Find("Moon");
+        if (moon == null)
+        {
+            Debug.LogError("Could not get moon radius and position. The 'Moon' object does not exist.");
+            return;
+        }
+        // Set the enemy target position
+        target_pos = moon.transform.position;
+        PlayerController playerController = moon.GetComponent<PlayerController>();
+
+        if (playerController == null)
+        {
+            Debug.LogError("Could not get player controller to obtain the moon radius.");
+            return;
+        }
+
+        //Set the moon radius. Necessary for landing.
+        moon_radius = playerController.getMoonRadius();
+
+        // Ste the sprite direction
         Vector3 dir = target_pos - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + angle_offset;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        // Initialize land speed proportionaly of the current speed
-        land_speed = speed / 2.0f;
     }
 
     // Update is called once per frame
@@ -67,6 +90,7 @@ public class EnemyBehavior : MonoBehaviour
             return;
         }
 
+        // Reduce speed when the enemy is landing
         if (speed != land_speed)
         {
             speed = land_speed;

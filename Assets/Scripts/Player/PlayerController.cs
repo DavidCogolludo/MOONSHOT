@@ -9,6 +9,13 @@ public class PlayerController : MonoBehaviour
 
     float halfScreenWidth;
 
+    private float moonRadius = 2.7f;
+
+    void Awake()
+    {
+        setMoonRadius();
+
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +36,30 @@ public class PlayerController : MonoBehaviour
             else
                 rightHand.Attack(mouseWorldPos2D);
         }
+    }
+
+    void setMoonRadius()
+    {
+        Transform moonBody = transform.Find("moonBody");
+
+        if (moonBody == null)
+        {
+            Debug.LogError("Could not set moon radius. The moon has not a child named 'moonBody'.");
+            return;
+        }
+
+        SpriteRenderer moonSprite = moonBody.GetComponent<SpriteRenderer>();
+        if (moonSprite == null)
+        {
+            Debug.LogError("Could not set moon radius. Could not get moon's body sprite");
+            return;
+        }
+
+        moonRadius = moonSprite.bounds.size.x / 2.0f;
+    }
+
+    public float getMoonRadius()
+    {
+        return moonRadius;
     }
 }

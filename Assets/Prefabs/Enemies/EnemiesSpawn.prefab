@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2775145623583577283}
   - component: {fileID: 4551656739855579192}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: EnemiesSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center_X: 0
   center_Y: 0
-  radius: 100
+  radius: 30
   n_enemies: 3
   enemy_game_obj: {fileID: 8089776735533667260, guid: 4688d54eaac300649bef4c93326e7f6b,
     type: 3}
