@@ -55,10 +55,10 @@ TextureImporter:
     second: Machanguito_C_R_Leg
   - first:
       213: 8195424743351289630
-    second: Machanguito_C_0
+    second: Machanguito_C_Moustache
   - first:
       213: -1592970831882538357
-    second: Machanguito_C_1
+    second: Machanguito_C_Hat
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -3030,7 +3030,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: Machanguito_C_0
+      name: Machanguito_C_Moustache
       rect:
         serializedVersion: 2
         x: 403
@@ -3051,7 +3051,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Machanguito_C_1
+      name: Machanguito_C_Hat
       rect:
         serializedVersion: 2
         x: 35

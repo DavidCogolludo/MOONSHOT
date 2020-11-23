@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7ec4750d259fc054da2b724dd12f1c37
+guid: 50fb8e4947945c04d92dad20bb687162
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -55,7 +55,7 @@ TextureImporter:
     second: Machanguito_A_R_Leg
   - first:
       213: -5860421971428403213
-    second: Machanguito_A_Moustache
+    second: Machanguito_A_0
   - first:
       213: 1137044291240403518
     second: Machanguito_A_1
@@ -3074,27 +3074,6 @@ TextureImporter:
         boneIndex[1]: 0
         boneIndex[2]: 0
         boneIndex[3]: 0
-    - serializedVersion: 2
-      name: Machanguito_A_Moustache
-      rect:
-        serializedVersion: 2
-        x: 390
-        y: 308
-        width: 95
-        height: 113
-      alignment: 9
-      pivot: {x: 0.5000003, y: 0.32704014}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f79d1f44499baea0800000000000000
-      internalID: -5860421971428403213
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []

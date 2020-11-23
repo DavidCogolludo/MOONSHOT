@@ -101,8 +101,8 @@ MonoBehaviour:
       m_Hash: 1037565863
       m_Sprite: {fileID: -6248549586003205467, guid: bb28806dafec1de44841705d460120ec,
         type: 3}
-  - m_Name: Mostach
-    m_Hash: 1603382149
+  - m_Name: Moustache
+    m_Hash: -1503914654
     m_CategoryList:
     - m_Name: A
       m_Hash: -740712821
