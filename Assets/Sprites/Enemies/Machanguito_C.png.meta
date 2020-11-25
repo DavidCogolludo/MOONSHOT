@@ -687,12 +687,12 @@ TextureImporter:
         parentId: -1
       - name: R_Mid_Arm
         position: {x: 45.98205, y: 0.0000004815154, z: 0}
-        rotation: {x: 0, y: 0, z: -0.25240105, w: 0.96762276}
-        length: 40.867435
+        rotation: {x: 0, y: 0, z: -0.2524011, w: 0.9676227}
+        length: 40.86743
         parentId: 0
       - name: R_Bot_Arm
-        position: {x: 40.867435, y: -0.00000043900695, z: 0}
-        rotation: {x: 0, y: 0, z: -0.04170043, w: 0.9991302}
+        position: {x: 40.86743, y: 0.0000041797402, z: 0}
+        rotation: {x: 0, y: 0, z: -0.041700356, w: 0.9991302}
         length: 16.197678
         parentId: 1
       spriteID: 7a5b7179a098ba290800000000000000
@@ -993,7 +993,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
       - weight[0]: 0.977093
-        weight[1]: 0.022907048
+        weight[1]: 0.022907019
         weight[2]: 0
         weight[3]: 0
         boneIndex[0]: 0
@@ -1001,7 +1001,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
       - weight[0]: 0.85670775
-        weight[1]: 0.14329223
+        weight[1]: 0.14329225
         weight[2]: 0
         weight[3]: 0
         boneIndex[0]: 0
@@ -1009,7 +1009,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
       - weight[0]: 0.57045424
-        weight[1]: 0.4295457
+        weight[1]: 0.42954576
         weight[2]: 0
         weight[3]: 0
         boneIndex[0]: 0
@@ -1081,7 +1081,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
       - weight[0]: 0.95618653
-        weight[1]: 0.043813564
+        weight[1]: 0.043813467
         weight[2]: 0
         weight[3]: 0
         boneIndex[0]: 0
@@ -1097,7 +1097,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
       - weight[0]: 0.56439245
-        weight[1]: 0.43560752
+        weight[1]: 0.43560755
         weight[2]: 0
         weight[3]: 0
         boneIndex[0]: 0
@@ -1208,17 +1208,17 @@ TextureImporter:
       bones:
       - name: L_Top_Arm
         position: {x: 101.14197, y: 11.669617, z: 0}
-        rotation: {x: 0, y: 0, z: 0.9949643, w: 0.10023003}
-        length: 45.07761
+        rotation: {x: 0, y: 0, z: 0.9949643, w: 0.1002298}
+        length: 45.077618
         parentId: -1
       - name: L_Mid_Arm
-        position: {x: 45.077614, y: 0.00000969228, z: 0}
-        rotation: {x: 0, y: 0, z: 0.21644467, w: 0.9762949}
-        length: 40.20019
+        position: {x: 45.07762, y: -0.000012664599, z: 0}
+        rotation: {x: 0, y: 0, z: 0.21644448, w: 0.97629493}
+        length: 40.200188
         parentId: 0
       - name: L_Bot_Arm
-        position: {x: 40.200188, y: 0.0000030127794, z: 0}
-        rotation: {x: 0, y: 0, z: 0.019680956, w: 0.99980634}
+        position: {x: 40.200188, y: 0.0000019362851, z: 0}
+        rotation: {x: 0, y: 0, z: 0.019680928, w: 0.99980634}
         length: 15.839976
         parentId: 1
       spriteID: 7ec2878e639903300800000000000000
@@ -1477,7 +1477,7 @@ TextureImporter:
         boneIndex[1]: 2
         boneIndex[2]: 0
         boneIndex[3]: 0
-      - weight[0]: 0.9797126
+      - weight[0]: 0.97971267
         weight[1]: 0.020287363
         weight[2]: 0
         weight[3]: 0
@@ -1493,7 +1493,7 @@ TextureImporter:
         boneIndex[1]: 0
         boneIndex[2]: 0
         boneIndex[3]: 0
-      - weight[0]: 0.6104866
+      - weight[0]: 0.61048675
         weight[1]: 0.38951325
         weight[2]: 0
         weight[3]: 0
@@ -1502,7 +1502,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
       - weight[0]: 0.71710885
-        weight[1]: 0.28289118
+        weight[1]: 0.28289115
         weight[2]: 0
         weight[3]: 0
         boneIndex[0]: 0
@@ -1598,7 +1598,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
       - weight[0]: 0.58717495
-        weight[1]: 0.41282502
+        weight[1]: 0.41282505
         weight[2]: 0
         weight[3]: 0
         boneIndex[0]: 0
@@ -1638,7 +1638,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
       - weight[0]: 0.96704173
-        weight[1]: 0.03295832
+        weight[1]: 0.03295827
         weight[2]: 0
         weight[3]: 0
         boneIndex[0]: 0
@@ -1713,8 +1713,8 @@ TextureImporter:
         length: 83.705
         parentId: 0
       - name: Head
-        position: {x: 83.70501, y: 0.00013018711, z: 0}
-        rotation: {x: 0, y: 0, z: -0.015746934, w: 0.999876}
+        position: {x: 83.70502, y: 0.00012613414, z: 0}
+        rotation: {x: 0, y: 0, z: -0.015746977, w: 0.9998761}
         length: 11.857787
         parentId: 1
       spriteID: 6c5354a447c6de410800000000000000
@@ -2101,16 +2101,16 @@ TextureImporter:
       - name: L_Top_Leg
         position: {x: 22.57074, y: 83.55496, z: 0}
         rotation: {x: 0, y: 0, z: -0.81522804, w: 0.57914007}
-        length: 45.123337
+        length: 45.123333
         parentId: -1
       - name: L_Mid_Leg
-        position: {x: 45.123333, y: 0.0000007925454, z: 0}
-        rotation: {x: 0, y: 0, z: 0.29583403, w: 0.95523936}
-        length: 32.810127
+        position: {x: 45.12333, y: 0.00000043729074, z: 0}
+        rotation: {x: 0, y: 0, z: 0.2958341, w: 0.95523936}
+        length: 32.810135
         parentId: 0
       - name: L_Bot_Leg
-        position: {x: 32.81013, y: 0.0000033514943, z: 0}
-        rotation: {x: 0, y: 0, z: -0.163079, w: 0.9866131}
+        position: {x: 32.810135, y: -0.0000010805686, z: 0}
+        rotation: {x: 0, y: 0, z: -0.16307905, w: 0.9866131}
         length: 6.266627
         parentId: 1
       spriteID: 8f9d3914449892ad0800000000000000
@@ -2555,17 +2555,17 @@ TextureImporter:
       bones:
       - name: R_Top_Leg
         position: {x: 15.89679, y: 83.72766, z: 0}
-        rotation: {x: 0, y: 0, z: -0.57398796, w: 0.81886375}
-        length: 46.98959
+        rotation: {x: 0, y: 0, z: -0.7620829, w: 0.6474796}
+        length: 44.461758
         parentId: -1
       - name: R_Mid_Leg
-        position: {x: 46.98959, y: -0.0000026335292, z: 0}
-        rotation: {x: 0, y: 0, z: -0.29927954, w: 0.9541655}
-        length: 31.953663
+        position: {x: 44.46176, y: 0.000034948123, z: 0}
+        rotation: {x: 0, y: 0, z: 0.300638, w: 0.95373833}
+        length: 34.5964
         parentId: 0
       - name: R_Bot_Leg
-        position: {x: 31.953665, y: -0.0000016027969, z: 0}
-        rotation: {x: 0, y: 0, z: 0.1604178, w: 0.9870493}
+        position: {x: 34.596416, y: 0.000020996316, z: 0}
+        rotation: {x: 0, y: 0, z: -0.19183254, w: 0.98142767}
         length: 6.2666264
         parentId: 1
       spriteID: d1b8cd0ca15028a60800000000000000
