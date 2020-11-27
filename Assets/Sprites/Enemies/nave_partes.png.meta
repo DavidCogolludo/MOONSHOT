@@ -16,52 +16,52 @@ TextureImporter:
     second: nave_partes_3
   - first:
       213: -3834098559371903609
-    second: nave_partes_4
+    second: body
   - first:
       213: -1933460745870466218
-    second: nave_partes_5
+    second: flag_china
   - first:
       213: -6282793898576562425
     second: nave_partes_6
   - first:
       213: 1708950336981319024
-    second: nave_partes_7
+    second: neck
   - first:
       213: -4705356992570914531
-    second: nave_partes_8
+    second: left_wing-mordido
   - first:
       213: -2004890870985126542
-    second: nave_partes_9
+    second: left_wing
   - first:
       213: 5261272267787412799
-    second: nave_partes_10
+    second: flag_american
   - first:
       213: -8023942976911341867
-    second: nave_partes_11
+    second: celo
   - first:
       213: -4390563942800896599
-    second: nave_partes_12
+    second: right_wing
   - first:
       213: 7283892798299608985
-    second: nave_partes_13
+    second: pelvis
   - first:
       213: -102583898581460250
-    second: nave_partes_14
+    second: motor_soport1
   - first:
       213: -2549194444096936326
-    second: nave_partes_15
+    second: palo1
   - first:
       213: -2655575990214480218
-    second: nave_partes_16
+    second: palo2
   - first:
       213: -286964384619808970
-    second: nave_partes_17
+    second: motor1
   - first:
       213: 5728300272612253949
-    second: nave_partes_18
+    second: motor_soport2
   - first:
       213: 5832646743995117989
-    second: nave_partes_19
+    second: motor2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -157,7 +157,7 @@ TextureImporter:
         width: 153
         height: 153
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,7 +178,7 @@ TextureImporter:
         width: 31
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,7 +199,7 @@ TextureImporter:
         width: 40
         height: 101
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -220,7 +220,7 @@ TextureImporter:
         width: 154
         height: 154
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,15 +233,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_4
+      name: body
       rect:
         serializedVersion: 2
-        x: 519
-        y: 416
+        x: 518
+        y: 418
         width: 109
         height: 182
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,7 +254,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_5
+      name: flag_china
       rect:
         serializedVersion: 2
         x: 89
@@ -262,7 +262,7 @@ TextureImporter:
         width: 94
         height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,7 +283,7 @@ TextureImporter:
         width: 69
         height: 102
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,7 +296,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_7
+      name: neck
       rect:
         serializedVersion: 2
         x: 358
@@ -304,7 +304,7 @@ TextureImporter:
         width: 115
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,7 +317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_8
+      name: left_wing-mordido
       rect:
         serializedVersion: 2
         x: 77
@@ -325,7 +325,7 @@ TextureImporter:
         width: 94
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -338,7 +338,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_9
+      name: left_wing
       rect:
         serializedVersion: 2
         x: 196
@@ -346,7 +346,7 @@ TextureImporter:
         width: 93
         height: 129
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -359,7 +359,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_10
+      name: flag_american
       rect:
         serializedVersion: 2
         x: 319
@@ -367,7 +367,7 @@ TextureImporter:
         width: 94
         height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -380,7 +380,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_11
+      name: celo
       rect:
         serializedVersion: 2
         x: 443
@@ -388,7 +388,7 @@ TextureImporter:
         width: 74
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -401,7 +401,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_12
+      name: right_wing
       rect:
         serializedVersion: 2
         x: 529
@@ -409,7 +409,7 @@ TextureImporter:
         width: 92
         height: 129
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -422,7 +422,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_13
+      name: pelvis
       rect:
         serializedVersion: 2
         x: 305
@@ -430,7 +430,7 @@ TextureImporter:
         width: 126
         height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -443,7 +443,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_14
+      name: motor_soport1
       rect:
         serializedVersion: 2
         x: 460
@@ -451,7 +451,7 @@ TextureImporter:
         width: 42
         height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -464,7 +464,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_15
+      name: palo1
       rect:
         serializedVersion: 2
         x: 79
@@ -472,7 +472,7 @@ TextureImporter:
         width: 48
         height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -485,7 +485,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_16
+      name: palo2
       rect:
         serializedVersion: 2
         x: 148
@@ -493,7 +493,7 @@ TextureImporter:
         width: 45
         height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -506,7 +506,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_17
+      name: motor1
       rect:
         serializedVersion: 2
         x: 218
@@ -514,7 +514,7 @@ TextureImporter:
         width: 64
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -527,7 +527,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_18
+      name: motor_soport2
       rect:
         serializedVersion: 2
         x: 460
@@ -535,7 +535,7 @@ TextureImporter:
         width: 42
         height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -548,7 +548,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nave_partes_19
+      name: motor2
       rect:
         serializedVersion: 2
         x: 539
@@ -556,7 +556,7 @@ TextureImporter:
         width: 64
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
