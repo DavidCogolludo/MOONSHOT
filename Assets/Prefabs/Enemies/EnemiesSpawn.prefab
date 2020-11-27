@@ -47,5 +47,5 @@ MonoBehaviour:
   center_Y: 0
   radius: 30
   n_enemies: 3
-  enemy_game_obj: {fileID: 8089776735533667260, guid: 4688d54eaac300649bef4c93326e7f6b,
+  enemy_game_obj: {fileID: 5507177823411655491, guid: 4688d54eaac300649bef4c93326e7f6b,
     type: 3}

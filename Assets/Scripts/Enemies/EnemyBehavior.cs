@@ -12,27 +12,35 @@ public class EnemyBehavior : MonoBehaviour
     private const float MAX_LANDING_ANGLE = 180.0f;
 
     // Global params
-    public float speed = 5.0f;
+    private float max_speed;
+    private float ship_radius;
+    public float speed = 3.0f;
+    private bool is_ready_for_landing = false;
     private bool has_landed = false;
 
     //Moon info
-    // TODO: Get the moon radius and position on start.
     public Vector3 target_pos = new Vector3(0.0f, 0.0f, 0.0f); // The moon pos
     private float moon_radius = 2.7f;
 
     // Landing params
-    public float min_distance_for_landing = 3.0f;  // The min distance between the enemy and the moon to start landing
+    public float min_distance_for_landing = 4.0f;  // The min distance between the enemy and the moon to start landing
     private float current_land_rotation = 0.0f;
     private float land_speed;
-    
+
+    // Enemy Components
+    private Transform FireTransform;
+    private ParticleSystem FireComponent;
+    private Transform SmokeComponent;
+
 
     // Start is called before the first frame update
     void Start()
     {
 
+        max_speed = speed;
         // Initialize land speed proportionaly of the current speed
         // For the moment we reduce a half of the current speed and we can change this if we want
-        land_speed = speed / 2.0f;
+        land_speed = speed / 3.0f;
 
         // Get the moon position and radius
         GameObject moon = GameObject.Find("Moon");
@@ -58,6 +66,12 @@ public class EnemyBehavior : MonoBehaviour
         Vector3 dir = target_pos - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + angle_offset;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        // Set the fire component
+        ship_radius = transform.GetComponent<BoxCollider2D>().bounds.size.y / 2.0f;
+        FireTransform = transform.Find("Ship").Find("Turbines").Find("Fire");
+        FireComponent = FireTransform.GetComponent<ParticleSystem>();
+        SmokeComponent = transform.Find("Ship").Find("Turbines").Find("Smoke");
     }
 
     // Update is called once per frame
@@ -69,38 +83,73 @@ public class EnemyBehavior : MonoBehaviour
             return;
         }
 
+        
+        float distance_from_target = Vector3.Distance(transform.position, target_pos) - moon_radius - ship_radius;
+        if (distance_from_target <= 0.0f)
+        {
+            land();
+        }
+
+        // If we reach the minimum distance between the object and the target -> Start landing
+        if ((distance_from_target <= min_distance_for_landing) && !is_ready_for_landing)
+        {
+            PrepareForLanding(distance_from_target);
+        }
+        
+        
+        Move();
+        
+
+    }
+
+    private void Move()
+    {
         float current_speed = Time.deltaTime * speed;
         Vector3 normalized_dir = (target_pos - transform.position).normalized;
         transform.position = transform.position + normalized_dir * current_speed;
+    }
+    void PrepareForLanding(float distance_from_target)
+    {
 
-        float distance_from_target = Vector3.Distance(transform.position, target_pos) - moon_radius;
-        // If we reach the minimum distance between the object and the target -> Start landing
-        if (distance_from_target <= (min_distance_for_landing))
+        float land_preparation_percent = ((min_distance_for_landing - distance_from_target) / min_distance_for_landing) * 100.0f;
+        float REDUCE_SPEED_PHASE = 33.33f;
+        float TURN_ANIMATION_PHASE = 66.66f;
+
+        if (land_preparation_percent <= REDUCE_SPEED_PHASE)
         {
-            land(distance_from_target);
+            float speed_percent = (land_preparation_percent / REDUCE_SPEED_PHASE);
+            float speed_relation = (max_speed - land_speed) * speed_percent;
+            speed = max_speed -speed_relation;
+            var main_fire = FireComponent.main;
+            main_fire.startLifetime = 1.0f - speed_percent;
+        } else if (land_preparation_percent > REDUCE_SPEED_PHASE && land_preparation_percent <= TURN_ANIMATION_PHASE)
+        {
+            if (FireTransform.gameObject.activeSelf)
+            {
+                FireTransform.gameObject.SetActive(false);
+            }
+            float rotation_percent = (land_preparation_percent - REDUCE_SPEED_PHASE) / (TURN_ANIMATION_PHASE - REDUCE_SPEED_PHASE);
+            float current_rotation = (MAX_LANDING_ANGLE * rotation_percent);
+            float actual_rotation_to_increase = current_rotation - current_land_rotation;
+            current_land_rotation += actual_rotation_to_increase;
+            transform.Rotate(Vector3.forward, actual_rotation_to_increase);
+
+        } else if (!is_ready_for_landing)
+        {
+            is_ready_for_landing = true;
+            SmokeComponent.gameObject.SetActive(true);
         }
+ 
+        
+        
     }
 
-    void land(float distance_from_target)
+    void land()
     {
-        //Debug.Log(distance_from_target);
-        if (distance_from_target <= 0.01f || current_land_rotation >= MAX_LANDING_ANGLE)
-        {
-            has_landed = true;
-            return;
-        }
 
-        // Reduce speed when the enemy is landing
-        if (speed != land_speed)
-        {
-            speed = land_speed;
-        }
+        has_landed = true;
+        SmokeComponent.gameObject.SetActive(false);
 
-        float percent_to_land = ((min_distance_for_landing - distance_from_target)/ min_distance_for_landing) * 100.0f;
-        float current_rotation = (MAX_LANDING_ANGLE * percent_to_land)/100.0f;
-        float actual_rotation_to_increase = current_rotation - current_land_rotation;
-        transform.Rotate(Vector3.forward, actual_rotation_to_increase);
-        current_land_rotation += actual_rotation_to_increase;
 
     }
 }
