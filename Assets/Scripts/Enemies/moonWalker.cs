@@ -22,7 +22,8 @@ public class moonWalker : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + angle_offset;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        GameObject moon = GameObject.Find("Moon");
+        GameObject moon = GameObject.FindGameObjectWithTag("Player");
+
         if (moon == null)
         {
             Debug.LogError("Could not get moon radius and position. The 'Moon' object does not exist.");

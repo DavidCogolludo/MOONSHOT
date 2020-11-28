@@ -15,7 +15,7 @@ public class NaveExplosion : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Player")
+        if (collision.transform.tag == "Hand")
         {
             position = collision.transform.position;
             rigidbody2D.AddForce((transform.position - position) * 0.5f, ForceMode2D.Impulse);
