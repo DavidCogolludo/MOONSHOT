@@ -28,9 +28,11 @@ public class EnemyBehavior : MonoBehaviour
     private float land_speed;
 
     // Enemy Components
-    private Transform FireTransform;
+    public Transform FireTransform;
     private ParticleSystem FireComponent;
-    private Transform SmokeComponent;
+    public Transform SmokeComponent;
+
+    public GameObject nave;
 
 
     // Start is called before the first frame update
@@ -68,16 +70,13 @@ public class EnemyBehavior : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         // Set the fire component
-        ship_radius = transform.GetComponent<BoxCollider2D>().bounds.size.y / 2.0f;
-        FireTransform = transform.Find("Ship").Find("Turbines").Find("Fire");
+        ship_radius = nave.transform.GetComponent<BoxCollider2D>().bounds.size.y / 2.0f;
         FireComponent = FireTransform.GetComponent<ParticleSystem>();
-        SmokeComponent = transform.Find("Ship").Find("Turbines").Find("Smoke");
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (has_landed)
         {
             return;

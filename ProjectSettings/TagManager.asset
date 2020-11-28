@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Hand
+  - Trash
   layers:
   - Default
   - TransparentFX

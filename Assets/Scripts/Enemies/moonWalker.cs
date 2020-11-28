@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moonWalker : MonoBehaviour
+public class MoonWalker : MonoBehaviour
 {
 
     private const float angle_offset = -90;
