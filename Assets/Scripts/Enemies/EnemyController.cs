@@ -43,6 +43,7 @@ public class EnemyController : MonoBehaviour
     public GameObject nave;
 
     private bool hasLanded = false;
+    private float currentDeadSeconds = 0.0f; 
     public bool HasLanded { get => hasLanded; set => hasLanded = value; }
 
     private float halfScreenWidth;
@@ -106,6 +107,7 @@ public class EnemyController : MonoBehaviour
     {
         if (hasLanded || chamanguito.IsDead)
         {
+            DestroyAfterDead();
             return;
         }
         else if (!hasLanded && naveCollision.IsNaveDestroyed)
@@ -185,5 +187,23 @@ public class EnemyController : MonoBehaviour
 
         smokeVFX1.gameObject.SetActive(false);
         smokeVFX2.gameObject.SetActive(false);
+    }
+
+    void DestroyAfterDead()
+    {
+        
+        if (!chamanguito.IsDead)
+        {
+            return;
+        }
+
+        float maxSeconds = 5.0f;
+        currentDeadSeconds += Time.deltaTime;
+        
+        if (currentDeadSeconds >= maxSeconds)
+        {
+            Destroy(gameObject);
+        }
+        
     }
 }
