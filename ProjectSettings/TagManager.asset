@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Hand
   - Trash
+  - AlertOnStart
+  - AlertOnEnter
+  - AlertDissapear
   - ZoneAttack
   - GameManager
   layers:

@@ -5,14 +5,13 @@ using UnityEngine;
 public class NaveCollision : MonoBehaviour
 {
     public List<GameObject> children;
+    public EnemyController enemyController;
     public ParticleSystem explosion;
 
     private bool isNaveDestroyed = false;
     public bool IsNaveDestroyed { get => isNaveDestroyed; set => isNaveDestroyed = value; }
 
-
     private GameObject trash;
-
 
     private void Awake()
     {
@@ -39,6 +38,21 @@ public class NaveCollision : MonoBehaviour
                 child.GetComponent<PolygonCollider2D>().enabled = true;
                 child.transform.SetParent(trash.transform);
             }
+        }
+
+        if (collision.transform.tag == "AlertOnStart")
+        {
+            enemyController.AlertOnStart();
+        }
+
+        if (collision.transform.tag == "AlertOnEnter")
+        {
+            enemyController.AlertOnEnter();
+        }
+
+        if (collision.transform.tag == "AlertDissapear")
+        {
+            enemyController.AlertDissapear();
         }
     }
 }

@@ -53,7 +53,7 @@ public class EnemySpawn : MonoBehaviour
             float random_angle = (float)UnityEngine.Random.Range(0.0f, MAX_RADIUS_ANGLE);
             Vector3 spawn_pos = new Vector3((float)(radius * Math.Cos(random_angle)), (float)(radius * Math.Sin(random_angle)), 0.0f);
 
-            while (rightForbiddenXSpace > spawn_pos.x && leftForbiddenXSpace < spawn_pos.x)
+            while (rightForbiddenXSpace > spawn_pos.x && leftForbiddenXSpace < spawn_pos.x && spawn_pos.y > 0)
             {
                 random_angle = (float)UnityEngine.Random.Range(0.0f, MAX_RADIUS_ANGLE);
                 spawn_pos = new Vector3((float)(radius * Math.Cos(random_angle)), (float)(radius * Math.Sin(random_angle)), 0.0f);

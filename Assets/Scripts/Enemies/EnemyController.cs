@@ -50,6 +50,9 @@ public class EnemyController : MonoBehaviour
     private float halfScreenWidth;
     private Vector3 scaleChange;
 
+    public GameObject alert;
+    private GameObject alertInstance;
+
     private void Awake()
     {
         FireComponent1 = fireVFX1.GetComponent<ParticleSystem>();
@@ -192,7 +195,7 @@ public class EnemyController : MonoBehaviour
 
     void DestroyAfterDead()
     {
-        
+
         if (!chamanguito.IsDead)
         {
             return;
@@ -209,6 +212,49 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+    }
+    public void AlertOnStart()
+    {
+        alertInstance = Instantiate(alert);
+
+        GameObject moon = GameObject.Find("Moon");
+        Vector3 dir = moon.transform.position - transform.position;
+        dir = dir.normalized;
+
+        float mainMultiplier = -15.0f;
+
+        Vector3 alertPos = dir * mainMultiplier;
+
+        while (alertPos.x <= -8.3f || alertPos.x >= 8.3f)
+        {
+            mainMultiplier += 0.5f;
+            alertPos = dir * mainMultiplier;
+        }
+
+        while (alertPos.y <= -4.5f || alertPos.y >= 4.5f)
+        {
+            mainMultiplier += 0.5f;
+            alertPos = dir * mainMultiplier;
+        }
+
+        alertInstance.transform.position = alertPos;
+    }
+
+    public void AlertOnEnter()
+    {
+        InvokeRepeating("AlertBlink", 0f, 0.3f);
+    }
+
+    public void AlertDissapear()
+    {
+        CancelInvoke();
+        Destroy(alertInstance);
+    }
+
+    void AlertBlink()
+    {
+        if (alertInstance)
+            alertInstance.SetActive(!alertInstance.activeSelf);
+
     }
 }
