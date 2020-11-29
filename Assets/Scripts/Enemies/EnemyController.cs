@@ -199,7 +199,12 @@ public class EnemyController : MonoBehaviour
 
         float maxSeconds = 5.0f;
         currentDeadSeconds += Time.deltaTime;
-        
+
+        foreach (SpriteRenderer component in GetComponentsInChildren<SpriteRenderer>())
+        {
+            float currentAlpha = 1.0f - (currentDeadSeconds / maxSeconds);
+            component.color = new Color(component.color.r, component.color.g, component.color.b, currentAlpha);
+        }
         if (currentDeadSeconds >= maxSeconds)
         {
             Destroy(gameObject);
