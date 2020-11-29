@@ -5,6 +5,7 @@ using UnityEngine;
 public class NaveCollision : MonoBehaviour
 {
     public List<GameObject> children;
+    public EnemyController enemyController;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,21 @@ public class NaveCollision : MonoBehaviour
 
             foreach (GameObject child in children)
                 child.GetComponent<PolygonCollider2D>().enabled = true;
+        }
+
+        if (collision.transform.tag == "AlertOnStart")
+        {
+            enemyController.AlertOnStart();
+        }
+
+        if (collision.transform.tag == "AlertOnEnter")
+        {
+            enemyController.AlertOnEnter();
+        }
+
+        if (collision.transform.tag == "AlertDissapear")
+        {
+            enemyController.AlertDissapear();
         }
     }
 }
