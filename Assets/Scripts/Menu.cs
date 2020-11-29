@@ -12,6 +12,7 @@ public class Menu : MonoBehaviour
     {
         animator = menu.gameObject.GetComponent<Animator>();
         animator.SetBool("pause", true);
+        Debug.Log("Pene");
     }
 
     public void Play()
@@ -26,6 +27,14 @@ public class Menu : MonoBehaviour
         //title.SetActive(true);
         menu.SetActive(true);
         animator.SetBool("pause", true);
+        
+    }
+    bool pausedfromButton = false;
+    public void PauseFromButton()
+    {
+        pausedfromButton = true;
+       
+
     }
 
     public void Exit()
@@ -35,9 +44,11 @@ public class Menu : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P)|| pausedfromButton)
         {            
             Pause();
+            pausedfromButton = false;
         }
     }
+    
 }
