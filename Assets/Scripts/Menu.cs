@@ -3,7 +3,7 @@
 public class Menu : MonoBehaviour
 {
     public GameObject menu;
-    public GameObject title;
+    //public GameObject title;
     public GameManager gameManager;
 
     private Animator animator;
@@ -16,14 +16,14 @@ public class Menu : MonoBehaviour
 
     public void Play()
     {
-        title.SetActive(false);
+        //title.SetActive(false);
         animator.SetBool("pause", false);
         gameManager.StartGame();
     }
 
     public void Pause()
     {
-        title.SetActive(true);
+        //title.SetActive(true);
         menu.SetActive(true);
         animator.SetBool("pause", true);
     }
