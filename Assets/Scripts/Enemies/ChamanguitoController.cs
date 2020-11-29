@@ -8,19 +8,27 @@ public class ChamanguitoController : MonoBehaviour
     private const float angle_offset = -90;
     // Start is called before the first frame update
 
-    public float speed = 0.1f;
+    public float speed = 0.3f;
     private Vector3 moonPosition = new Vector3(0.0f, 0.0f, 0.0f);
     private Vector3 targetPosition = new Vector3(0.0f, 0.0f, 0.0f);
     private float moonRadius = 2.7f;
-    private float currentObjectRadius = 0.0f;
+    private float currentObjectRadius = 0.2f;
     private bool arriveToTarget = false;
 
     private bool isDead = false;
-    private bool isJumping = false;
+    private bool isWalking = false;
+    private bool isAttack = false;
 
     private EnemyController enemyController;
     private Animator animator;
-    private int randomTimeWaitIdle;
+    private float randomTimeWaitIdle;
+
+    [Space(10)]
+    [Header("Idle Wait")]
+    [Range(0.0f, 10.0f)]
+    public float minIdleTime = 0.0f;
+    [Range(0.0f, 20.0f)]
+    public float maxIdleTime = 0.0f;
 
     private void Awake()
     {
@@ -33,7 +41,7 @@ public class ChamanguitoController : MonoBehaviour
         // Set the sprite direction
         Vector3 dir = transform.position - moonPosition;
 
-        randomTimeWaitIdle = Random.Range(0, 5);
+        randomTimeWaitIdle = Random.Range(minIdleTime, maxIdleTime);
 
         GameObject moon = GameObject.FindGameObjectWithTag("Player");
 
@@ -68,17 +76,22 @@ public class ChamanguitoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyController.HasLanded)
+        if (enemyController.HasLanded && !isWalking)
         {
             animator.SetBool("isJumping", true);
 
-            Jump();
-            isJumping = true;
+            Jump(Vector3.zero);
+        }
 
-            if (!arriveToTarget && !isJumping)
-            {
-                Move();
-            }
+        if (!arriveToTarget && isWalking && !isAttack)
+        {
+            animator.SetBool("isWalking", true);
+            Move();
+        }
+
+        if (isAttack)
+        {
+            animator.SetBool("isAttack", true);
         }
     }
 
@@ -96,12 +109,25 @@ public class ChamanguitoController : MonoBehaviour
         return currentAngle;
     }
 
-    void Jump()
+    void Jump(Vector3 destination)
     {
-        float currentAngle = CalculoWeyler();
-        float totalRadius = moonRadius + currentObjectRadius;
+        float distanceFromTarget = Vector3.Distance(transform.position, destination);
 
-        transform.position = new Vector3(transform.position.x, totalRadius * Mathf.Sin(currentAngle), transform.position.z);
+        if (distanceFromTarget <= 2.5f)
+        {
+            animator.SetBool("isIdle", true);
+
+            randomTimeWaitIdle -= 0.1f;
+
+            if (randomTimeWaitIdle <= 0.0f)
+                isWalking = true;
+        }
+        else
+        {
+            float current_speed = Time.deltaTime * 0.3f;
+            Vector3 normalized_dir = (destination - transform.position).normalized;
+            transform.position = transform.position + normalized_dir * current_speed;
+        }
     }
 
     void Move()
@@ -124,10 +150,17 @@ public class ChamanguitoController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.transform.tag);
+
         if (collision.transform.tag == "Hand" && enemyController.HasLanded)
         {
             isDead = true;
             GetComponent<PolygonCollider2D>().enabled = true;
+        }
+        
+        if (collision.transform.tag == "ZoneAttack")
+        {
+            isAttack = true;
         }
     }
 }

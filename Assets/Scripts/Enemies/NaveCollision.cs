@@ -5,6 +5,7 @@ using UnityEngine;
 public class NaveCollision : MonoBehaviour
 {
     public List<GameObject> children;
+    public ParticleSystem explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class NaveCollision : MonoBehaviour
     {
         if (collision.transform.tag == "Hand")
         {
+            explosion.Play();
             GetComponent<BoxCollider2D>().enabled = false;
 
             foreach (GameObject child in children)

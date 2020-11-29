@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     [Header("Extra")]
     public bool runInBackground = false;
+    public bool startGameDebug = false;
 
     [Space(10)]
     [Header("Components")]
@@ -38,6 +39,9 @@ public class GameManager : MonoBehaviour
 
         playerComponent.enabled = false;
         enemiesController.enabled = false;
+
+        if (startGameDebug)
+            StartGame();
     }
 
     // Update is called once per frame
