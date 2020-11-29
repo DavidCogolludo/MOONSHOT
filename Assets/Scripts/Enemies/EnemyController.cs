@@ -198,9 +198,6 @@ public class EnemyController : MonoBehaviour
         Vector3 dir = moon.transform.position - transform.position;
         dir = dir.normalized;
 
-        Debug.Log(dir);
-        Debug.Log(dir.normalized);
-
         float mainMultiplier = -15.0f;
 
         Vector3 alertPos = dir * mainMultiplier;
