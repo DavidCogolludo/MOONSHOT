@@ -16,9 +16,12 @@ public class ChamanguitoController : MonoBehaviour
     private bool arriveToTarget = false;
 
     private bool isDead = false;
+    public bool IsDead { get => isDead; set => isDead = value; }
+
     private bool isWalking = false;
     private bool isAttack = false;
 
+    private GameManager gameManager;
     private EnemyController enemyController;
     private Animator animator;
     private float randomTimeWaitIdle;
@@ -30,10 +33,13 @@ public class ChamanguitoController : MonoBehaviour
     [Range(0.0f, 20.0f)]
     public float maxIdleTime = 0.0f;
 
+    
+
     private void Awake()
     {
         enemyController = GetComponentInParent<EnemyController>();
         animator = GetComponent<Animator>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     void Start()
@@ -83,15 +89,36 @@ public class ChamanguitoController : MonoBehaviour
             Jump(Vector3.zero);
         }
 
-        if (!arriveToTarget && isWalking && !isAttack)
+        if (!gameManager.IsPlayerDead && !isDead)
         {
-            animator.SetBool("isWalking", true);
-            Move();
-        }
+            if (!arriveToTarget && isWalking && !isAttack)
+            {
+                animator.SetBool("isIdle", false);
+                animator.SetBool("isWalking", true);
+                Move();
+            }
 
-        if (isAttack)
+            if (isAttack)
+            {
+                if (!animator.GetBool("isAttack"))
+                {
+                    animator.SetBool("isWalking", false);
+                    animator.SetBool("isAttack", true);
+                }
+                else
+                {
+                    if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
+                        gameManager.IsPlayerDead = true;
+                }
+            }
+        }
+        else if (!gameManager.IsPlayerDead && isDead)
         {
-            animator.SetBool("isAttack", true);
+            animator.SetBool("isDead", true);
+        }
+        else if (gameManager.IsPlayerDead && !isDead)
+        {
+            animator.SetBool("isPlayerDead", true);
         }
     }
 
@@ -115,6 +142,7 @@ public class ChamanguitoController : MonoBehaviour
 
         if (distanceFromTarget <= 2.5f)
         {
+            animator.SetBool("isJumping", false);
             animator.SetBool("isIdle", true);
 
             randomTimeWaitIdle -= 0.1f;
@@ -150,12 +178,10 @@ public class ChamanguitoController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.transform.tag);
-
-        if (collision.transform.tag == "Hand" && enemyController.HasLanded)
+        if (collision.transform.tag == "Hand")
         {
             isDead = true;
-            GetComponent<PolygonCollider2D>().enabled = true;
+            GetComponent<PolygonCollider2D>().isTrigger = false;
         }
         
         if (collision.transform.tag == "ZoneAttack")

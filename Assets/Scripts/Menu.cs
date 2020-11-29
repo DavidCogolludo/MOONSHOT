@@ -7,12 +7,13 @@ public class Menu : MonoBehaviour
     public GameManager gameManager;
 
     private Animator animator;
+    bool pausedfromButton = false;
+
 
     void Start()
     {
         animator = menu.gameObject.GetComponent<Animator>();
         animator.SetBool("pause", true);
-        Debug.Log("Pene");
     }
 
     public void Play()
@@ -29,12 +30,10 @@ public class Menu : MonoBehaviour
         animator.SetBool("pause", true);
         
     }
-    bool pausedfromButton = false;
+    
     public void PauseFromButton()
     {
         pausedfromButton = true;
-       
-
     }
 
     public void Exit()

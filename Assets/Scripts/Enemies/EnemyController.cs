@@ -8,7 +8,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public bool isDead = false;
-    public GameObject chamanguito;
+    public ChamanguitoController chamanguito;
+    private NaveCollision naveCollision;
 
     // CONSTANTS
     private const float angle_offset = -90;
@@ -54,6 +55,8 @@ public class EnemyController : MonoBehaviour
 
         halfScreenWidth = Screen.width / 2.0f;
         scaleChange = transform.localScale;
+
+        naveCollision = nave.GetComponent<NaveCollision>();
     }
 
     // Start is called before the first frame update
@@ -101,11 +104,14 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hasLanded)
+        if (hasLanded || chamanguito.IsDead)
         {
             return;
         }
-
+        else if (!hasLanded && naveCollision.IsNaveDestroyed)
+        {
+            chamanguito.IsDead = true;
+        }
         
         float distance_from_target = Vector3.Distance(transform.position, target_pos) - moon_radius - ship_radius;
         if (distance_from_target <= 0.0f)

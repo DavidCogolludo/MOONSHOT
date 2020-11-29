@@ -12,16 +12,22 @@ public class HandController : MonoBehaviour
 
     Animator animator;
 
+    private CircleCollider2D circleCollider2D;
+
     public float transition;
     public float transitionFactor;
+
+    private void Awake()
+    {
+        circleCollider2D = GetComponent<CircleCollider2D>();
+        animator = gameObject.GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         isAttacking = false;
         isAttackingTransition = false;
-
-        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
