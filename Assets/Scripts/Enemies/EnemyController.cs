@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
     private float max_speed;
     private float ship_radius;
     public float speed = 3.0f;
+    public float secondsForDestroy = 5.0f;
     private bool is_ready_for_landing = false;
 
     //Moon info
@@ -43,6 +44,7 @@ public class EnemyController : MonoBehaviour
     public GameObject nave;
 
     private bool hasLanded = false;
+    private float currentDeadSeconds = 0.0f; 
     public bool HasLanded { get => hasLanded; set => hasLanded = value; }
 
     private float halfScreenWidth;
@@ -109,6 +111,7 @@ public class EnemyController : MonoBehaviour
     {
         if (hasLanded || chamanguito.IsDead)
         {
+            DestroyAfterDead();
             return;
         }
         else if (!hasLanded && naveCollision.IsNaveDestroyed)
@@ -190,6 +193,26 @@ public class EnemyController : MonoBehaviour
         smokeVFX2.gameObject.SetActive(false);
     }
 
+    void DestroyAfterDead()
+    {
+
+        if (!chamanguito.IsDead)
+        {
+            return;
+        }
+
+        currentDeadSeconds += Time.deltaTime;
+
+        foreach (SpriteRenderer component in GetComponentsInChildren<SpriteRenderer>())
+        {
+            float currentAlpha = 1.0f - (currentDeadSeconds / secondsForDestroy);
+            component.color = new Color(component.color.r, component.color.g, component.color.b, currentAlpha);
+        }
+        if (currentDeadSeconds >= secondsForDestroy)
+        {
+            Destroy(gameObject);
+        }
+    }
     public void AlertOnStart()
     {
         alertInstance = Instantiate(alert);
@@ -232,5 +255,6 @@ public class EnemyController : MonoBehaviour
     {
         if (alertInstance)
             alertInstance.SetActive(!alertInstance.activeSelf);
+
     }
 }

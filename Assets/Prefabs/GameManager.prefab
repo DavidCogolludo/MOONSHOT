@@ -579,6 +579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8522348275648148523}
+  - component: {fileID: 998749099985642958}
   m_Layer: 0
   m_Name: Trash
   m_TagString: Trash
@@ -600,3 +601,15 @@ Transform:
   m_Father: {fileID: 8522348273808335305}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &998749099985642958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522348275648148532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7cae09b0838174da2576ec5cde0688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
