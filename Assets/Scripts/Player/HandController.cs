@@ -68,8 +68,8 @@ public class HandController : MonoBehaviour
     {
         if (isAttacking && oCollider.gameObject.tag == "Enemy")
         {
-            EnemyController enemy = oCollider.gameObject.GetComponent<EnemyController>();
-            enemy.RemoveLife();
+            //EnemyController enemy = oCollider.gameObject.GetComponent<EnemyController>();
+            //enemy.RemoveLife();
         }
     }
 }

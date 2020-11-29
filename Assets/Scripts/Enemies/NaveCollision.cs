@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NaveManager : MonoBehaviour
+public class NaveCollision : MonoBehaviour
 {
     public List<GameObject> children;
 

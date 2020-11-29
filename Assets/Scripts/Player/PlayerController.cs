@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         setMoonRadius();
-
     }
+
     // Start is called before the first frame update
     void Start()
     {

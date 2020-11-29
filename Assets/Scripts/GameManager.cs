@@ -22,9 +22,6 @@ public class GameManager : MonoBehaviour
     [Header("Extra")]
     public bool runInBackground = false;
 
-    private void Awake()
-    {
-    }
 
     // Start is called before the first frame update
     void Start()
