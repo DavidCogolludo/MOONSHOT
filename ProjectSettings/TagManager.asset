@@ -10,6 +10,8 @@ TagManager:
   - AlertOnStart
   - AlertOnEnter
   - AlertDissapear
+  - ZoneAttack
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - 
   - 
   - Background image
-  - 
+  - Chamanguito
   - 
   - 
   - 

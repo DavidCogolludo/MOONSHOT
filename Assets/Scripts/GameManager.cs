@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
 
     [Space(10)]
     [Header("Player")]
-    public bool isPlayerDead = false;
+    private bool isPlayerDead = false;
+    public bool IsPlayerDead { get => isPlayerDead; set => isPlayerDead = value; }
 
     [Space(10)]
     [Header("Audio")]
@@ -21,11 +22,13 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     [Header("Extra")]
     public bool runInBackground = false;
+    public bool startGameDebug = false;
 
     [Space(10)]
     [Header("Components")]
     public PlayerController playerComponent;
     public EnemySpawn enemiesController;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,9 @@ public class GameManager : MonoBehaviour
 
         playerComponent.enabled = false;
         enemiesController.enabled = false;
+
+        if (startGameDebug)
+            StartGame();
     }
 
     // Update is called once per frame
@@ -82,5 +88,10 @@ public class GameManager : MonoBehaviour
 
         playerComponent.enabled = false;
         enemiesController.enabled = false;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Destroy(collision.gameObject);
     }
 }
