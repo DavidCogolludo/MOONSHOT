@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GarbageCollector : MonoBehaviour
 {
+    public float secondsBeforeDestroy = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,15 +15,14 @@ public class GarbageCollector : MonoBehaviour
     void Update()
     {
 
-        float maxSeconds = 5.0f;
         
         foreach (SpriteRenderer component in GetComponentsInChildren<SpriteRenderer>())
         {
-            float currentSeconds = (maxSeconds - (component.color.a * maxSeconds) + Time.deltaTime);
-            float currentAlpha = 1.0f - (currentSeconds / maxSeconds);
+            float currentSeconds = (secondsBeforeDestroy - (component.color.a * secondsBeforeDestroy) + Time.deltaTime);
+            float currentAlpha = 1.0f - (currentSeconds / secondsBeforeDestroy);
             component.color = new Color(component.color.r, component.color.g, component.color.b, currentAlpha);
 
-            if (currentSeconds >= maxSeconds)
+            if (currentSeconds >= secondsBeforeDestroy)
             {
                 Destroy(component.gameObject);
             }

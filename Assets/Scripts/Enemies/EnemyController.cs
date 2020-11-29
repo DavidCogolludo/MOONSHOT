@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
     private float max_speed;
     private float ship_radius;
     public float speed = 3.0f;
+    public float secondsForDestroy = 5.0f;
     private bool is_ready_for_landing = false;
 
     //Moon info
@@ -197,15 +198,14 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-        float maxSeconds = 5.0f;
         currentDeadSeconds += Time.deltaTime;
 
         foreach (SpriteRenderer component in GetComponentsInChildren<SpriteRenderer>())
         {
-            float currentAlpha = 1.0f - (currentDeadSeconds / maxSeconds);
+            float currentAlpha = 1.0f - (currentDeadSeconds / secondsForDestroy);
             component.color = new Color(component.color.r, component.color.g, component.color.b, currentAlpha);
         }
-        if (currentDeadSeconds >= maxSeconds)
+        if (currentDeadSeconds >= secondsForDestroy)
         {
             Destroy(gameObject);
         }
