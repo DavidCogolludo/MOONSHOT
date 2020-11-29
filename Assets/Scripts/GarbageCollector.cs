@@ -14,8 +14,6 @@ public class GarbageCollector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        
         foreach (SpriteRenderer component in GetComponentsInChildren<SpriteRenderer>())
         {
             float currentSeconds = (secondsBeforeDestroy - (component.color.a * secondsBeforeDestroy) + Time.deltaTime);

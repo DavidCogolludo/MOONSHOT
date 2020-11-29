@@ -195,7 +195,6 @@ public class EnemyController : MonoBehaviour
 
     void DestroyAfterDead()
     {
-
         if (!chamanguito.IsDead)
         {
             return;

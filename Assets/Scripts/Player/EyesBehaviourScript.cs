@@ -19,6 +19,9 @@ public class EyesBehaviourScript : MonoBehaviour
     private Vector3 leftPupilStartPos;
     private Vector3 rightPupilStartPos;
 
+    public float offsetEyeX = 0.11f;
+    public float offsetEyeY = 0.18f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +45,8 @@ public class EyesBehaviourScript : MonoBehaviour
         float eyeRadiusY = leftEye.bounds.extents.y / 2.0f;
         float pupilRadiusy = leftPupil.bounds.extents.y / 2.0f;
 
-        eyeMaxMovementX = eyeRadiusX - pupilRadiusX;
-        eyeMaxMovementY = eyeRadiusY - pupilRadiusy;
+        eyeMaxMovementX = eyeRadiusX - pupilRadiusX + offsetEyeX;
+        eyeMaxMovementY = eyeRadiusY - pupilRadiusy + offsetEyeY;
     }
 
     // Update is called once per frame
@@ -56,7 +59,16 @@ public class EyesBehaviourScript : MonoBehaviour
         float leftAngle = Mathf.Atan2(leftEyeToMouse.y, leftEyeToMouse.x);
         float rightAngle = Mathf.Atan2(rightEyeToMouse.y, rightEyeToMouse.x);
 
-        leftPupilTransform.position = new Vector3((eyeMaxMovementX * Mathf.Cos(leftAngle)) + leftPupilStartPos.x, (eyeMaxMovementY * Mathf.Sin(leftAngle)) + leftPupilStartPos.y, 0.0f);
-        rightPupilTransform.position = new Vector3((eyeMaxMovementX * Mathf.Cos(rightAngle)) + rightPupilStartPos.x, (eyeMaxMovementY * Mathf.Sin(rightAngle)) + rightPupilStartPos.y, 0.0f);
+        leftPupilTransform.position = new Vector3(
+            (eyeMaxMovementX * Mathf.Cos(leftAngle)) + leftPupilStartPos.x, 
+            (eyeMaxMovementY * Mathf.Sin(leftAngle)) + 
+            leftPupilStartPos.y, 0.0f
+            );
+
+        rightPupilTransform.position = new Vector3(
+            (eyeMaxMovementX * Mathf.Cos(rightAngle)) + rightPupilStartPos.x, 
+            (eyeMaxMovementY * Mathf.Sin(rightAngle)) + rightPupilStartPos.y, 
+            0.0f
+            );
     }
 }

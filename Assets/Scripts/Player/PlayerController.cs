@@ -7,6 +7,14 @@ public class PlayerController : MonoBehaviour
     public HandController leftHand;
     public HandController rightHand;
 
+    public GameObject rightEye;
+    public GameObject lefthEye;
+
+    public GameObject rightEyeDead;
+    public GameObject lefthEyeDead;
+
+    private GameManager gameManager;
+
     float halfScreenWidth;
 
     private float moonRadius = 2.7f;
@@ -14,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         setMoonRadius();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Start is called before the first frame update
@@ -25,16 +34,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!gameManager.IsPlayerDead)
         {
-            Vector3 mousePos = Input.mousePosition;
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
-            Vector2 mouseWorldPos2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mousePos = Input.mousePosition;
+                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
+                Vector2 mouseWorldPos2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
 
-            if (mousePos.x <= halfScreenWidth)
-                leftHand.Attack(mouseWorldPos2D);
-            else
-                rightHand.Attack(mouseWorldPos2D);
+                if (mousePos.x <= halfScreenWidth)
+                    leftHand.Attack(mouseWorldPos2D, 180.0f);
+                else
+                    rightHand.Attack(mouseWorldPos2D, 0.0f);
+            }
+        }
+        else
+        {
+            rightEye.SetActive(false);
+            lefthEye.SetActive(false);
+
+            rightEyeDead.SetActive(true);
+            lefthEyeDead.SetActive(true);
+
+            //leftHand.Dead();
+            //rightHand.Dead();
         }
     }
 

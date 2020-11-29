@@ -7,8 +7,8 @@ public class HandController : MonoBehaviour
     bool isAttacking;
     bool isAttackingTransition;
 
-    Vector2 originalPos;
-    Vector2 attackPos;
+    Vector3 originalPos;
+    Vector3 attackPos;
 
     Animator animator;
 
@@ -16,6 +16,8 @@ public class HandController : MonoBehaviour
 
     public float transition;
     public float transitionFactor;
+
+    public Quaternion initialRotation;
 
     private void Awake()
     {
@@ -28,6 +30,8 @@ public class HandController : MonoBehaviour
     {
         isAttacking = false;
         isAttackingTransition = false;
+
+        initialRotation = gameObject.transform.rotation;
     }
 
     // Update is called once per frame
@@ -47,6 +51,8 @@ public class HandController : MonoBehaviour
         {
             isAttacking = false;
             attackPos = originalPos;
+
+            transform.rotation = initialRotation;
         }
 
         if (!isAttacking && Vector2.Distance(currentPosition, originalPos) < transitionFactor)
@@ -56,18 +62,27 @@ public class HandController : MonoBehaviour
         }
     }
 
-    public void Attack(Vector2 AttackPos)
+    public void Attack(Vector3 AttackPos, float angleRotation)
     {
         if (!isAttacking && !isAttackingTransition)
         {
             isAttacking = true;
             isAttackingTransition = true;
 
+            Vector3 dir = AttackPos - gameObject.transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + angleRotation;
+            gameObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
             originalPos = gameObject.transform.position;
             attackPos = AttackPos;
 
             animator.SetBool("IsAttacking", isAttacking);
         }
+    }
+
+    public void Dead()
+    {
+        GetComponent<Rigidbody2D>().gravityScale = 1.0f;
     }
 
     private void OnTriggerEnter2D(Collider2D oCollider)
