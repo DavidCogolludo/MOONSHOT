@@ -1,33 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
     public GameObject menu;
+    public GameObject title;
+    public GameManager gameManager;
+
     private Animator animator;
+
     void Start()
     {
         animator = menu.gameObject.GetComponent<Animator>();
         animator.SetBool("pause", true);
     }
 
-   public void play()
-   {
+    public void Play()
+    {
+        title.SetActive(false);
         animator.SetBool("pause", false);
+        gameManager.StartGame();
     }
 
     public void Pause()
     {
+        title.SetActive(true);
         menu.SetActive(true);
         animator.SetBool("pause", true);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause(); //Esto igual no se debe llamar desde este update si no desde un input manager/Game Manager
+        {            
+            Pause();
         }
     }
 }

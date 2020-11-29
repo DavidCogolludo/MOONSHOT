@@ -22,13 +22,22 @@ public class GameManager : MonoBehaviour
     [Header("Extra")]
     public bool runInBackground = false;
 
+    [Space(10)]
+    [Header("Components")]
+    public PlayerController playerComponent;
+    public EnemySpawn enemiesController;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSourceMusic.Play(0);
+        //audioSourceMusic.Play(0);
         volumenMusic = audioSourceMusic.volume;
         volumenSound = audioSourceSound.volume;
+
+        Time.timeScale = 0;
+
+        playerComponent.enabled = false;
+        enemiesController.enabled = false;
     }
 
     // Update is called once per frame
@@ -57,5 +66,21 @@ public class GameManager : MonoBehaviour
     void Sound()
     {
         audioSourceSound.volume = volumenSound;
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1;
+
+        playerComponent.enabled = true;
+        enemiesController.enabled = true;
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+
+        playerComponent.enabled = false;
+        enemiesController.enabled = false;
     }
 }

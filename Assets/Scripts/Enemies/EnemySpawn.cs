@@ -20,7 +20,9 @@ public class EnemySpawn : MonoBehaviour
     private float current_time = 0.0f;      // The current time inside the time lapse
 
     private List<float> spawn_times;        // List of spawn times. Each value indicates when the enemy should spawn inside the time lapse.
-
+  
+    public float leftForbiddenXSpace;
+    public float rightForbiddenXSpace;
 
     void Start()
     {
@@ -47,13 +49,19 @@ public class EnemySpawn : MonoBehaviour
 
         // Spawn enemies
         for (int i= 0; i < enemies_to_spawn; i++)
-        {        
+        {
             float random_angle = (float)UnityEngine.Random.Range(0.0f, MAX_RADIUS_ANGLE);
             Vector3 spawn_pos = new Vector3((float)(radius * Math.Cos(random_angle)), (float)(radius * Math.Sin(random_angle)), 0.0f);
+
+            while (rightForbiddenXSpace > spawn_pos.x && leftForbiddenXSpace < spawn_pos.x)
+            {
+                random_angle = (float)UnityEngine.Random.Range(0.0f, MAX_RADIUS_ANGLE);
+                spawn_pos = new Vector3((float)(radius * Math.Cos(random_angle)), (float)(radius * Math.Sin(random_angle)), 0.0f);
+            }
+
             GameObject new_obj = GameObject.Instantiate(enemy_game_obj);
             new_obj.transform.position = spawn_pos;
         }
-
         
         // Remove those indexes that have spawn already
         foreach (int index in index_to_remove)
