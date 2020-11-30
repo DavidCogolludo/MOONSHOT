@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class Menu : MonoBehaviour
     public void Play()
     {
         //title.SetActive(false);
+        if (gameManager.IsPlayerDead)
+            SceneManager.LoadScene("DaniScene");
+
         animator.SetBool("pause", false);
         gameManager.StartGame();
     }
