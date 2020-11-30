@@ -288,8 +288,8 @@ MonoBehaviour:
   n_enemies: 3
   enemy_game_obj: {fileID: 1657056223877890769, guid: 4688d54eaac300649bef4c93326e7f6b,
     type: 3}
-  leftForbiddenXSpace: 0
-  rightForbiddenXSpace: 0
+  leftForbiddenXSpace: -12
+  rightForbiddenXSpace: 12
 --- !u!61 &8522348273808335309
 BoxCollider2D:
   m_ObjectHideFlags: 0
