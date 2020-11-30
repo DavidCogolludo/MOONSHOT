@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     float halfScreenWidth;
 
+    private bool isKillHands = false;
+
     private float moonRadius = 2.7f;
 
     void Awake()
@@ -50,14 +52,19 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            rightEye.SetActive(false);
-            lefthEye.SetActive(false);
+            if (!isKillHands)
+            {
+                isKillHands = true;
 
-            rightEyeDead.SetActive(true);
-            lefthEyeDead.SetActive(true);
+                rightEye.SetActive(false);
+                lefthEye.SetActive(false);
 
-            //leftHand.Dead();
-            //rightHand.Dead();
+                rightEyeDead.SetActive(true);
+                lefthEyeDead.SetActive(true);
+
+                leftHand.Dead();
+                rightHand.Dead();
+            }
         }
     }
 

@@ -7,12 +7,16 @@ public class HandController : MonoBehaviour
     bool isAttacking;
     bool isAttackingTransition;
 
+    private bool isDead = false;
+
     Vector3 originalPos;
     Vector3 attackPos;
 
     Animator animator;
 
     private CircleCollider2D circleCollider2D;
+    private GameObject trash;
+    private Rigidbody2D rigidBody2D;
 
     public float transition;
     public float transitionFactor;
@@ -23,6 +27,8 @@ public class HandController : MonoBehaviour
     {
         circleCollider2D = GetComponent<CircleCollider2D>();
         animator = gameObject.GetComponent<Animator>();
+        trash = GameObject.FindGameObjectWithTag("Trash");
+        rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
@@ -37,28 +43,31 @@ public class HandController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 currentPosition = gameObject.transform.position;
-
-        if (isAttackingTransition)
+        if (!isDead)
         {
-            Vector2 newPosition = Vector2.Lerp(currentPosition, attackPos, transition);
-            gameObject.transform.position = newPosition;
-        }
+            Vector2 currentPosition = gameObject.transform.position;
 
-        currentPosition = gameObject.transform.position;
+            if (isAttackingTransition)
+            {
+                Vector2 newPosition = Vector2.Lerp(currentPosition, attackPos, transition);
+                gameObject.transform.position = newPosition;
+            }
 
-        if (Vector2.Distance(currentPosition, attackPos) < transitionFactor)
-        {
-            isAttacking = false;
-            attackPos = originalPos;
+            currentPosition = gameObject.transform.position;
 
-            transform.rotation = initialRotation;
-        }
+            if (Vector2.Distance(currentPosition, attackPos) < transitionFactor)
+            {
+                isAttacking = false;
+                attackPos = originalPos;
 
-        if (!isAttacking && Vector2.Distance(currentPosition, originalPos) < transitionFactor)
-        {
-            isAttackingTransition = false;
-            animator.SetBool("IsAttacking", isAttackingTransition);
+                transform.rotation = initialRotation;
+            }
+
+            if (!isAttacking && Vector2.Distance(currentPosition, originalPos) < transitionFactor)
+            {
+                isAttackingTransition = false;
+                animator.SetBool("IsAttacking", isAttackingTransition);
+            }
         }
     }
 
@@ -82,7 +91,10 @@ public class HandController : MonoBehaviour
 
     public void Dead()
     {
-        GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+        isDead = true;
+        transform.SetParent(trash.transform);
+        rigidBody2D.constraints = RigidbodyConstraints2D.None;
+        rigidBody2D.gravityScale = 0.05f;
     }
 
     private void OnTriggerEnter2D(Collider2D oCollider)
