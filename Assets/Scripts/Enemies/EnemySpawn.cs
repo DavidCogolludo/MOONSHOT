@@ -13,8 +13,9 @@ public class EnemySpawn : MonoBehaviour
     public int center_X;                    // The X position where the moon is
     public int center_Y;                    // The Y position where the moon is
     public float radius = 30.0f;              // The spawn radius around the moon. The enemies will spawn in that perimetter.
-    private float spawn_time_range = 10.0f; // The time lapse
+    public float spawn_time_range = 10.0f; // The time lapse
     public int n_enemies = 3;               // The number of enemies that will spawn in a lapse time -> (spawn_time_range)
+    public int speed = 3;
 
     public GameObject enemy_game_obj;       // The enemy gameObject
     private float current_time = 0.0f;      // The current time inside the time lapse
@@ -61,6 +62,7 @@ public class EnemySpawn : MonoBehaviour
 
             GameObject new_obj = GameObject.Instantiate(enemy_game_obj);
             new_obj.transform.position = spawn_pos;
+            new_obj.GetComponent<EnemyController>().speed = speed;
         }
         
         // Remove those indexes that have spawn already

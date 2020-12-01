@@ -326,6 +326,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 5385919968337675706, guid: 823350547598d3b428311263f32a38de,
+        type: 3}
+      propertyPath: enemySpawn
+      value: 
+      objectReference: {fileID: 8522348275805803068}
+    - target: {fileID: 5385919968337675706, guid: 823350547598d3b428311263f32a38de,
+        type: 3}
+      propertyPath: thresholdSpawnMinutes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385919968337675706, guid: 823350547598d3b428311263f32a38de,
+        type: 3}
+      propertyPath: thresholdSpawnSeconds
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 823350547598d3b428311263f32a38de, type: 3}
 --- !u!1 &1550979695
@@ -644,3 +659,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f78a1893f558dc4385a0d2b5a4c9995, type: 3}
+--- !u!114 &8522348275805803068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8522348273808335310, guid: 8f78a1893f558dc4385a0d2b5a4c9995,
+    type: 3}
+  m_PrefabInstance: {fileID: 8522348275805803067}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ade6d2a5867784eaf8e57b1a1ea289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
