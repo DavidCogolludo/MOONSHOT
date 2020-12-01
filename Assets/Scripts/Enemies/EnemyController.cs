@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
     public GameObject nave;
 
     private bool hasLanded = false;
-    private float currentDeadSeconds = 0.0f; 
+    //private float currentDeadSeconds = 0.0f; 
     public bool HasLanded { get => hasLanded; set => hasLanded = value; }
 
     private float halfScreenWidth;
@@ -127,6 +127,8 @@ public class EnemyController : MonoBehaviour
 
         if (chamanguito)
         {
+            if (chamanguito.IsDead)
+
             if (hasLanded || chamanguito.IsDead)
             {
                 if (!isChamanguitoInDeleteMode)
@@ -134,13 +136,9 @@ public class EnemyController : MonoBehaviour
                     ChamanguitoCoroutine = fade(chamanguito.GetComponentsInChildren<SpriteRenderer>(), chamanguito.gameObject);
                     StartCoroutine(ChamanguitoCoroutine);
                     isChamanguitoInDeleteMode = true;
-                }
 
-                return;
-            }
-            else if (naveCollision && !hasLanded && naveCollision.IsNaveDestroyed)
-            {
-                chamanguito.IsDead = true;
+                    return;
+                }
             }
         }
 
@@ -153,25 +151,31 @@ public class EnemyController : MonoBehaviour
                     ShipCoroutine = fade(naveCollision.GetComponentsInChildren<SpriteRenderer>(), naveCollision.gameObject);
                     StartCoroutine(ShipCoroutine);
                     isShipInDeleteMode = true;
-                }
 
-                return;
+                    if (chamanguito && !hasLanded)
+                        chamanguito.IsDead = true;
+
+                    return;
+                }
             }
         }
 
-        float distance_from_target = Vector3.Distance(transform.position, target_pos) - moon_radius - ship_radius;
-        if (distance_from_target <= 0.0f)
+        if (!hasLanded && naveCollision && !naveCollision.IsNaveDestroyed && chamanguito && !chamanguito.IsDead)
         {
-            land();
-        }
+            float distance_from_target = Vector3.Distance(transform.position, target_pos) - moon_radius - ship_radius;
+            if (distance_from_target <= 0.0f)
+            {
+                land();
+            }
 
-        // If we reach the minimum distance between the object and the target -> Start landing
-        if ((distance_from_target <= min_distance_for_landing) && !is_ready_for_landing)
-        {
-            PrepareForLanding(distance_from_target);
+            // If we reach the minimum distance between the object and the target -> Start landing
+            if ((distance_from_target <= min_distance_for_landing) && !is_ready_for_landing)
+            {
+                PrepareForLanding(distance_from_target);
+            }
+
+            Move();
         }
-        
-        Move();
     }
 
     private void Move()
@@ -235,12 +239,12 @@ public class EnemyController : MonoBehaviour
 
         while (currentAlpha > 0.0f)
         {
-            currentAlpha -= 0.2f;
+            currentAlpha -= 0.1f;
 
             foreach (SpriteRenderer component in sprites)
                 component.color = new Color(component.color.r, component.color.g, component.color.b, currentAlpha);
             
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1f);
         }
 
         Destroy(obj);

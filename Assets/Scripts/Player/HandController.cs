@@ -99,9 +99,9 @@ public class HandController : MonoBehaviour
     public void Dead()
     {
         isDead = true;
-        transform.SetParent(trash.transform);
+        //transform.SetParent(trash.transform);
         rigidBody2D.constraints = RigidbodyConstraints2D.None;
-        rigidBody2D.gravityScale = 0.05f;
+        rigidBody2D.gravityScale = 0.15f;
     }
 
     private void OnTriggerEnter2D(Collider2D oCollider)
