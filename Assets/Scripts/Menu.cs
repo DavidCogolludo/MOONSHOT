@@ -12,6 +12,8 @@ public class Menu : MonoBehaviour
     public GameObject soundNumButton;
     public GameObject musicNumButton;
 
+    private GameObject pauseButton;
+
     private Animator animator;
     bool pausedfromButton = false;
 
@@ -21,6 +23,7 @@ public class Menu : MonoBehaviour
 
     private void Awake()
     {
+        pauseButton = transform.Find("PauseButton").gameObject;
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioSource>();
     }
 
@@ -34,6 +37,8 @@ public class Menu : MonoBehaviour
 
         soundNumButton.SetActive(true);
         musicNumButton.SetActive(true);
+
+        pauseButton.SetActive(false);
     }
 
     public void Play()
@@ -45,6 +50,8 @@ public class Menu : MonoBehaviour
 
         soundNumButton.SetActive(false);
         musicNumButton.SetActive(false);
+
+        pauseButton.SetActive(true);
 
         animator.SetBool("pause", false);
         gameManager.StartGame();
@@ -60,6 +67,8 @@ public class Menu : MonoBehaviour
         musicButton.SetActive(true);
         soundNumButton.SetActive(true);
         musicNumButton.SetActive(true);
+
+        pauseButton.SetActive(false);
 
         animator.SetBool("pause", true);
     }
