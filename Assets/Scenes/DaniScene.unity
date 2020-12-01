@@ -201,6 +201,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1213056149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1088304437477636406, guid: 823350547598d3b428311263f32a38de,
+    type: 3}
+  m_PrefabInstance: {fileID: 1495753263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1495753263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,6 +220,11 @@ PrefabInstance:
       objectReference: {fileID: 1997747187}
     - target: {fileID: 1239328075, guid: 823350547598d3b428311263f32a38de, type: 3}
       propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1997747187}
+    - target: {fileID: 2399006926980115323, guid: 823350547598d3b428311263f32a38de,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1997747187}
     - target: {fileID: 2920667788313788922, guid: 823350547598d3b428311263f32a38de,
@@ -326,6 +337,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 4925103636376956913, guid: 823350547598d3b428311263f32a38de,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1997747187}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 823350547598d3b428311263f32a38de, type: 3}
 --- !u!1 &1550979695
@@ -496,6 +512,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7605f7697be791a4580e838f5d4303ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2026914088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1274093344513211629, guid: 823350547598d3b428311263f32a38de,
+    type: 3}
+  m_PrefabInstance: {fileID: 1495753263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3016806859942700788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -851,6 +873,16 @@ PrefabInstance:
       propertyPath: playerComponent
       value: 
       objectReference: {fileID: 308369285}
+    - target: {fileID: 8522348273808335304, guid: 8f78a1893f558dc4385a0d2b5a4c9995,
+        type: 3}
+      propertyPath: soundButton
+      value: 
+      objectReference: {fileID: 1213056149}
+    - target: {fileID: 8522348273808335304, guid: 8f78a1893f558dc4385a0d2b5a4c9995,
+        type: 3}
+      propertyPath: musicButton
+      value: 
+      objectReference: {fileID: 2026914088}
     - target: {fileID: 8522348273808335305, guid: 8f78a1893f558dc4385a0d2b5a4c9995,
         type: 3}
       propertyPath: m_LocalPosition.x

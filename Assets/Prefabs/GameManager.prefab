@@ -262,6 +262,8 @@ MonoBehaviour:
   startGameDebug: 0
   playerComponent: {fileID: 0}
   enemiesController: {fileID: 8522348273808335310}
+  soundButton: {fileID: 0}
+  musicButton: {fileID: 0}
 --- !u!81 &8522348273808335311
 AudioListener:
   m_ObjectHideFlags: 0
