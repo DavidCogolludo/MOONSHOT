@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class GameManager : MonoBehaviour
     public PlayerController playerComponent;
     public EnemySpawn enemiesController;
 
+    public GameObject soundButton;
+    public GameObject musicButton;
+
+    private int soundNumber = 0;
+    private int musicNumber = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -43,16 +49,15 @@ public class GameManager : MonoBehaviour
 
         if (startGameDebug)
             StartGame();
+
+        soundButton.transform.Rotate(0.0f, 0.0f, 0.0f);
+        musicButton.transform.Rotate(0.0f, 0.0f, 0.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
         General();
-
-        Music();
-
-        Sound();
     }
 
     void General()
@@ -66,6 +71,44 @@ public class GameManager : MonoBehaviour
     void Music()
     {
         audioSourceMusic.volume = volumenMusic;
+    }
+
+    public void OnClickMusic()
+    {
+        musicButton.transform.Rotate(0.0f, 0.0f, musicButton.transform.rotation.z + 90.0f);
+
+        musicNumber++;
+
+        if (musicNumber == 1)
+            audioSourceMusic.volume = 0.75f;
+        else if (musicNumber == 2)
+            audioSourceMusic.volume = 0.25f;
+        else if (musicNumber == 3)
+            audioSourceMusic.volume = 0.0f;
+        else
+        {
+            audioSourceMusic.volume = 1.0f;
+            musicNumber = 0;
+        }
+    }
+
+    public void OnClickSound()
+    {
+        soundButton.transform.Rotate(0.0f, 0.0f, soundButton.transform.rotation.z + 90.0f);
+
+        soundNumber++;
+
+        if (soundNumber == 1)
+            audioSourceSound.volume = 0.75f;
+        else if (soundNumber == 2)
+            audioSourceSound.volume = 0.25f;
+        else if (soundNumber == 3)
+            audioSourceSound.volume = 0.0f;
+        else
+        {
+            audioSourceSound.volume = 1.0f;
+            soundNumber = 0;
+        }
     }
 
     void Sound()

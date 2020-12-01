@@ -16,6 +16,14 @@ public class NaveCollision : MonoBehaviour
 
     private GameObject trash;
 
+    [Space(10)]
+    [Header("Particles")]
+    public ParticleSystem fire1;
+    public ParticleSystem fire2;
+    public ParticleSystem smoke1;
+    public ParticleSystem smoke2;
+
+
     private void Awake()
     {
         trash = GameObject.FindGameObjectWithTag("Trash");
@@ -37,6 +45,16 @@ public class NaveCollision : MonoBehaviour
             GetComponent<BoxCollider2D>().enabled = false;
             isNaveDestroyed = true;
             soundManager.PlayOneShot(sound, 1.0f);
+
+            var main1 = fire1.main;
+            var main2 = fire2.main;
+            var main3 = smoke1.main;
+            var main4 = smoke2.main;
+
+            main1.loop = false;
+            main2.loop = false;
+            main3.loop = false;
+            main4.loop = false;
 
             foreach (GameObject child in children)
             {
