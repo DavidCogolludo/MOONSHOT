@@ -12,6 +12,7 @@ TagManager:
   - AlertDissapear
   - ZoneAttack
   - GameManager
+  - SoundManager
   layers:
   - Default
   - TransparentFX

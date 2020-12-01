@@ -7,6 +7,9 @@ public class NaveCollision : MonoBehaviour
     public List<GameObject> children;
     public EnemyController enemyController;
     public ParticleSystem explosion;
+    public AudioClip sound;
+
+    private AudioSource soundManager;
 
     private bool isNaveDestroyed = false;
     public bool IsNaveDestroyed { get => isNaveDestroyed; set => isNaveDestroyed = value; }
@@ -16,6 +19,7 @@ public class NaveCollision : MonoBehaviour
     private void Awake()
     {
         trash = GameObject.FindGameObjectWithTag("Trash");
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -32,6 +36,7 @@ public class NaveCollision : MonoBehaviour
             explosion.Play();
             GetComponent<BoxCollider2D>().enabled = false;
             isNaveDestroyed = true;
+            soundManager.PlayOneShot(sound, 1.0f);
 
             foreach (GameObject child in children)
             {
