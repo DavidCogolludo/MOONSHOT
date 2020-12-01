@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     public GameObject menu;
+    private GameObject pauseButton;
+
     //public GameObject title;
     public GameManager gameManager;
 
@@ -16,6 +18,7 @@ public class Menu : MonoBehaviour
 
     private void Awake()
     {
+        pauseButton = transform.Find("PauseButton").gameObject;
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioSource>();
     }
 
@@ -33,6 +36,7 @@ public class Menu : MonoBehaviour
             SceneManager.LoadScene("DaniScene");
 
         animator.SetBool("pause", false);
+        pauseButton.SetActive(true);
         gameManager.StartGame();
     }
 
@@ -42,6 +46,7 @@ public class Menu : MonoBehaviour
         //title.SetActive(true);
         menu.SetActive(true);
         animator.SetBool("pause", true);
+        pauseButton.SetActive(false);
         
     }
     
