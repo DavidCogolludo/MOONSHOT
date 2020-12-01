@@ -774,8 +774,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9981974502e9db64282701b5b7e4c3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: 0.03
-  transitionFactor: 0.05
+  transition: 0.15
+  transitionFactor: 0.09
   initialRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &2984111998064431175
 Rigidbody2D:
@@ -813,7 +813,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 5
 --- !u!1 &3237106251046302498
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,8 +931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9981974502e9db64282701b5b7e4c3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: 0.03
-  transitionFactor: 0.05
+  transition: 0.15
+  transitionFactor: 0.09
   initialRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &8576061617009350811
 Rigidbody2D:
@@ -970,7 +970,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 5
 --- !u!1 &6245283596254068390
 GameObject:
   m_ObjectHideFlags: 0

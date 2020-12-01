@@ -53,6 +53,13 @@ public class EnemyController : MonoBehaviour
     public GameObject alert;
     private GameObject alertInstance;
 
+    // Fade / Destroy
+    private IEnumerator ChamanguitoCoroutine;
+    private IEnumerator ShipCoroutine;
+
+    private bool isChamanguitoInDeleteMode;
+    private bool isShipInDeleteMode;
+
     private void Awake()
     {
         FireComponent1 = fireVFX1.GetComponent<ParticleSystem>();
@@ -67,6 +74,9 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isChamanguitoInDeleteMode = false;
+        isShipInDeleteMode = false;
+
         if (transform.position.x <= 0)
         {
             transform.localScale = new Vector3(-transform.localScale.y, transform.localScale.y, transform.localScale.z);
@@ -109,16 +119,46 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hasLanded || chamanguito.IsDead)
+        if (!chamanguito && !naveCollision)
         {
-            DestroyAfterDead();
+            Destroy(this.gameObject);
             return;
         }
-        else if (!hasLanded && naveCollision.IsNaveDestroyed)
+
+        if (chamanguito)
         {
-            chamanguito.IsDead = true;
+            if (hasLanded || chamanguito.IsDead)
+            {
+                if (!isChamanguitoInDeleteMode)
+                {
+                    ChamanguitoCoroutine = fade(chamanguito.GetComponentsInChildren<SpriteRenderer>(), chamanguito.gameObject);
+                    StartCoroutine(ChamanguitoCoroutine);
+                    isChamanguitoInDeleteMode = true;
+                }
+
+                return;
+            }
+            else if (naveCollision && !hasLanded && naveCollision.IsNaveDestroyed)
+            {
+                chamanguito.IsDead = true;
+            }
         }
-        
+
+        if (naveCollision)
+        {
+            if (naveCollision.IsNaveDestroyed)
+            {
+                if (!isShipInDeleteMode)
+                {
+                    ShipCoroutine = fade(naveCollision.GetComponentsInChildren<SpriteRenderer>(), naveCollision.gameObject);
+                    StartCoroutine(ShipCoroutine);
+                    isShipInDeleteMode = true;
+                }
+
+                return;
+            }
+        }
+
         float distance_from_target = Vector3.Distance(transform.position, target_pos) - moon_radius - ship_radius;
         if (distance_from_target <= 0.0f)
         {
@@ -131,10 +171,7 @@ public class EnemyController : MonoBehaviour
             PrepareForLanding(distance_from_target);
         }
         
-        
         Move();
-        
-
     }
 
     private void Move()
@@ -143,6 +180,7 @@ public class EnemyController : MonoBehaviour
         Vector3 normalized_dir = (target_pos - transform.position).normalized;
         transform.position = transform.position + normalized_dir * current_speed;
     }
+
     void PrepareForLanding(float distance_from_target)
     {
 
@@ -179,10 +217,7 @@ public class EnemyController : MonoBehaviour
 
             smokeVFX1.gameObject.SetActive(true);
             smokeVFX2.gameObject.SetActive(true);
-        }
- 
-        
-        
+        } 
     }
 
     void land()
@@ -193,25 +228,24 @@ public class EnemyController : MonoBehaviour
         smokeVFX2.gameObject.SetActive(false);
     }
 
-    void DestroyAfterDead()
+    public IEnumerator fade(SpriteRenderer[] sprites, GameObject obj)
     {
-        if (!chamanguito.IsDead)
+        yield return new WaitForSeconds(10);
+        float currentAlpha = 1.0f;
+
+        while (currentAlpha > 0.0f)
         {
-            return;
+            currentAlpha -= 0.2f;
+
+            foreach (SpriteRenderer component in sprites)
+                component.color = new Color(component.color.r, component.color.g, component.color.b, currentAlpha);
+            
+            yield return new WaitForSeconds(1);
         }
 
-        currentDeadSeconds += Time.deltaTime;
-
-        foreach (SpriteRenderer component in GetComponentsInChildren<SpriteRenderer>())
-        {
-            float currentAlpha = 1.0f - (currentDeadSeconds / secondsForDestroy);
-            component.color = new Color(component.color.r, component.color.g, component.color.b, currentAlpha);
-        }
-        if (currentDeadSeconds >= secondsForDestroy)
-        {
-            Destroy(gameObject);
-        }
+        Destroy(obj);
     }
+
     public void AlertOnStart()
     {
         alertInstance = Instantiate(alert);
