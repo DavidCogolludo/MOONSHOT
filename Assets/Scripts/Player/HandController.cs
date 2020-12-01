@@ -21,6 +21,10 @@ public class HandController : MonoBehaviour
     public float transition;
     public float transitionFactor;
 
+    public AudioClip sound;
+
+    private AudioSource soundManager;
+
     public Quaternion initialRotation;
 
     private void Awake()
@@ -29,6 +33,7 @@ public class HandController : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         trash = GameObject.FindGameObjectWithTag("Trash");
         rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -77,6 +82,8 @@ public class HandController : MonoBehaviour
         {
             isAttacking = true;
             isAttackingTransition = true;
+
+            soundManager.PlayOneShot(sound, 1.0f);
 
             Vector3 dir = AttackPos - gameObject.transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + angleRotation;

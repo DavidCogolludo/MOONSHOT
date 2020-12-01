@@ -761,6 +761,7 @@ MonoBehaviour:
   children: []
   enemyController: {fileID: 343738809850616964}
   explosion: {fileID: 1703209407018241620}
+  sound: {fileID: 8300000, guid: 1430d594fe5374547a85cbd987ab41cc, type: 3}
 --- !u!1 &639863951747382941
 GameObject:
   m_ObjectHideFlags: 0
@@ -5884,6 +5885,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+  isKiller: 0
+  sound: {fileID: 8300000, guid: f46eb0f06c9e7a448a68c7300cf4076d, type: 3}
   minIdleTime: 5
   maxIdleTime: 20
 --- !u!60 &6237289969039168147

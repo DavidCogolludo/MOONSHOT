@@ -21,10 +21,16 @@ public class ChamanguitoController : MonoBehaviour
     private bool isWalking = false;
     private bool isAttack = false;
 
+    public bool isKiller = false;
+
     private GameManager gameManager;
     private EnemyController enemyController;
     private Animator animator;
     private float randomTimeWaitIdle;
+
+    public AudioClip sound;
+
+    private AudioSource soundManager;
 
     [Space(10)]
     [Header("Idle Wait")]
@@ -40,6 +46,7 @@ public class ChamanguitoController : MonoBehaviour
         enemyController = GetComponentInParent<EnemyController>();
         animator = GetComponent<Animator>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioSource>();
     }
 
     void Start()
@@ -107,7 +114,7 @@ public class ChamanguitoController : MonoBehaviour
                 }
                 else
                 {
-                    if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
+                    if (isKiller || animator.GetCurrentAnimatorStateInfo(0).normalizedTime == 1 && !animator.IsInTransition(0))
                         gameManager.IsPlayerDead = true;
                 }
             }
@@ -116,7 +123,7 @@ public class ChamanguitoController : MonoBehaviour
         {
             animator.SetBool("isDead", true);
         }
-        else if (gameManager.IsPlayerDead && !isDead)
+        else if (gameManager.IsPlayerDead && !isDead && enemyController.HasLanded)
         {
             animator.SetBool("isPlayerDead", true);
         }
@@ -182,6 +189,7 @@ public class ChamanguitoController : MonoBehaviour
         {
             isDead = true;
             GetComponent<PolygonCollider2D>().isTrigger = false;
+            soundManager.PlayOneShot(sound, 1.0f);
         }
         
         if (collision.transform.tag == "ZoneAttack")

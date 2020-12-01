@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class Menu : MonoBehaviour
     private Animator animator;
     bool pausedfromButton = false;
 
+    public AudioClip sound;
+
+    private AudioSource soundManager;
+
+    private void Awake()
+    {
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioSource>();
+    }
 
     void Start()
     {
@@ -18,13 +27,18 @@ public class Menu : MonoBehaviour
 
     public void Play()
     {
+        soundManager.PlayOneShot(sound, 1.0f);
         //title.SetActive(false);
+        if (gameManager.IsPlayerDead)
+            SceneManager.LoadScene("DaniScene");
+
         animator.SetBool("pause", false);
         gameManager.StartGame();
     }
 
     public void Pause()
     {
+        soundManager.PlayOneShot(sound, 1.0f);
         //title.SetActive(true);
         menu.SetActive(true);
         animator.SetBool("pause", true);
@@ -38,6 +52,7 @@ public class Menu : MonoBehaviour
 
     public void Exit()
     {
+        soundManager.PlayOneShot(sound, 1.0f);
         Application.Quit();
     }
 

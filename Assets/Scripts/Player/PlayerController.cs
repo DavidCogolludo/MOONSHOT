@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public HandController leftHand;
     public HandController rightHand;
 
+    public GameObject flag;
+
     public GameObject rightEye;
     public GameObject lefthEye;
 
@@ -14,6 +16,10 @@ public class PlayerController : MonoBehaviour
     public GameObject lefthEyeDead;
 
     private GameManager gameManager;
+
+    public AudioClip sound;
+
+    private AudioSource soundManager;
 
     float halfScreenWidth;
 
@@ -25,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         setMoonRadius();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -54,6 +61,9 @@ public class PlayerController : MonoBehaviour
         {
             if (!isKillHands)
             {
+                soundManager.PlayOneShot(sound, 1.0f);
+                flag.SetActive(true);
+
                 isKillHands = true;
 
                 rightEye.SetActive(false);
