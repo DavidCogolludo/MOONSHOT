@@ -29,8 +29,6 @@ public class Menu : MonoBehaviour
     {
         soundManager.PlayOneShot(sound, 1.0f);
         //title.SetActive(false);
-        if (gameManager.IsPlayerDead)
-            SceneManager.LoadScene("DaniScene");
 
         animator.SetBool("pause", false);
         gameManager.StartGame();
@@ -42,7 +40,6 @@ public class Menu : MonoBehaviour
         //title.SetActive(true);
         menu.SetActive(true);
         animator.SetBool("pause", true);
-        
     }
     
     public void PauseFromButton()
@@ -62,6 +59,9 @@ public class Menu : MonoBehaviour
         {            
             Pause();
             pausedfromButton = false;
+
+            if (gameManager.IsPlayerDead)
+                SceneManager.LoadScene("DaniScene");
         }
     }
     

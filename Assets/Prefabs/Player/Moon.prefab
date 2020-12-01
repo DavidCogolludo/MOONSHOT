@@ -592,8 +592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9981974502e9db64282701b5b7e4c3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: 0.03
-  transitionFactor: 0.05
+  transition: 0.15
+  transitionFactor: 0.09
   sound: {fileID: 8300000, guid: 62a4913d8e50f51489c19ef85d5d9968, type: 3}
   initialRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &2984111998064431175
@@ -848,8 +848,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9981974502e9db64282701b5b7e4c3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: 0.03
-  transitionFactor: 0.05
+  transition: 0.15
+  transitionFactor: 0.09
   sound: {fileID: 8300000, guid: 62a4913d8e50f51489c19ef85d5d9968, type: 3}
   initialRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &8576061617009350811
