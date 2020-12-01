@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //audioSourceMusic.Play(0);
         volumenMusic = audioSourceMusic.volume;
         volumenSound = audioSourceSound.volume;
 
@@ -88,10 +87,5 @@ public class GameManager : MonoBehaviour
 
         playerComponent.enabled = false;
         enemiesController.enabled = false;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Destroy(collision.gameObject);
     }
 }

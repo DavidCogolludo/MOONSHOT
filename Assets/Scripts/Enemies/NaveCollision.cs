@@ -41,7 +41,6 @@ public class NaveCollision : MonoBehaviour
             foreach (GameObject child in children)
             {
                 child.GetComponent<PolygonCollider2D>().enabled = true;
-                child.transform.SetParent(trash.transform);
             }
         }
 
